@@ -1,5 +1,12 @@
+import wikipedia as wk
+import nltk
+
 def main():
-    print("Hello from exercise3!")
+    article = wk.page("Text_processing")
+    article_plain = article.content
+    article_toks = nltk.word_tokenize(article.content)
+    print(article_toks)
+    print(len(article_toks))
 
 
 if __name__ == "__main__":
