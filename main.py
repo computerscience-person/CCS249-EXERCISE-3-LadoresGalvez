@@ -6,13 +6,12 @@ from nltk.util import bigrams, trigrams
 def main():
     # Retrieve Wikipedia article
     article = wk.page("Python (programming language)")
-    article_toks = nltk.word_tokenize(article.content.lower())  # Tokenize first
-
-    # Remove punctuation tokens
-    article_toks = [word for word in article_toks if word.isalnum()]  # Keep only alphanumeric words
-
+    tokzr = nltk.tokenize.RegexpTokenizer(r'\w+')
+    article_toks = tokzr.tokenize(article.content.lower())
+    print(len(article_toks))
     # Limit to 1000 words
     article_toks = article_toks[:1000]
+    print(*(tok for tok in article_toks), sep = " ")
 
     # Generate bigram and trigram models
     def bigram_probabilities(tokens):
@@ -33,5 +32,11 @@ def main():
 
     # print(bigram_probabilities(article_toks))
     print(trigram_probabilities(article_toks))
+def bigrams_model():
+    ...
+
+def trigram_model():
+    ...
+
 if __name__ == "__main__":
     main()
