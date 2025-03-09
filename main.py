@@ -6,7 +6,7 @@ from nltk.util import bigrams, trigrams
 def main():
     # Retrieve Wikipedia article
     article = wk.page("Python (programming language)")
-    tokzr = nltk.tokenize.RegexpTokenizer(r'\w+')
+    tokzr = nltk.tokenize.RegexpTokenizer(r'\b(?:\w+(?:\.\w+)*|\d+\.\d+)\b')
     article_toks = tokzr.tokenize(article.content.lower())
     print(len(article_toks))
     # Limit to 1000 words
